@@ -13,17 +13,19 @@ scale = Vector2(0.5005209, 0.40625)
 texture = ExtResource("1_fc0e3")
 
 [node name="SimpleObstacle2" parent="." instance=ExtResource("2_feb5d")]
+visible = false
 position = Vector2(957, 174)
 
 [node name="SimpleObstacle" parent="." instance=ExtResource("2_feb5d")]
-position = Vector2(790, 272)
+position = Vector2(788, 252)
 
 [node name="SimpleObstacle3" parent="." instance=ExtResource("2_feb5d")]
-position = Vector2(1131, 253)
+position = Vector2(1104, 189)
 
 [node name="Runner" parent="." instance=ExtResource("1_e2o6t")]
 y_sort_enabled = true
 position = Vector2(694, 243)
 
 [node name="Circuit" parent="." instance=ExtResource("2_e2o6t")]
+visible = false
 position = Vector2(-2, -15)
