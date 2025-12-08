@@ -8,24 +8,21 @@
 [node name="Game" type="Node2D"]
 
 [node name="CircuitBackground" type="Sprite2D" parent="."]
-position = Vector2(974, 544)
-scale = Vector2(0.5005209, 0.40625)
+position = Vector2(970.99994, 546.00006)
+scale = Vector2(0.50390625, 0.40438983)
 texture = ExtResource("1_fc0e3")
 
 [node name="SimpleObstacle2" parent="." instance=ExtResource("2_feb5d")]
-visible = false
 position = Vector2(957, 174)
 
 [node name="SimpleObstacle" parent="." instance=ExtResource("2_feb5d")]
 position = Vector2(788, 252)
 
 [node name="SimpleObstacle3" parent="." instance=ExtResource("2_feb5d")]
-position = Vector2(1104, 189)
-
-[node name="Runner" parent="." instance=ExtResource("1_e2o6t")]
-y_sort_enabled = true
-position = Vector2(694, 243)
+position = Vector2(1138, 242)
 
 [node name="Circuit" parent="." instance=ExtResource("2_e2o6t")]
-visible = false
-position = Vector2(-2, -15)
+position = Vector2(-7, -3)
+
+[node name="Runner" parent="." instance=ExtResource("1_e2o6t")]
+position = Vector2(700, 223)
