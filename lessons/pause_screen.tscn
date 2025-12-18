@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj6ye05dbiqpi"]
+[gd_scene load_steps=8 format=3 uid="uid://bno603k3ov21v"]
 
 [ext_resource type="FontFile" uid="uid://vxbfcnef0pvq" path="res://assets/fonts/rubik/Rubik-Bold.ttf" id="1_6f8pp"]
 [ext_resource type="Script" uid="uid://bgupu55kc5qmw" path="res://lessons/pause_screen.gd" id="2_qb0gi"]
@@ -23,6 +23,14 @@ shader_parameter/tint = Color(0, 0, 0, 1)
 shader_parameter/tint_strength = 0.2290000108775
 shader_parameter/saturation = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_z8fvy"]
+bg_color = Color(0, 0, 0, 0.698039)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
 [node name="PauseScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -44,35 +52,45 @@ grow_vertical = 2
 
 [node name="UIPanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-offset_left = 645.0
-offset_top = 303.0
-offset_right = 1276.0
-offset_bottom = 807.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = -252.0
+offset_right = 316.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_z8fvy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIPanelContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
 
 [node name="Label" type="Label" parent="UIPanelContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Pause"
+theme_override_font_sizes/font_size = 96
+text = "PAUSE"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="UIPanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="UIPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="UIPanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UIPanelContainer/VBoxContainer/CenterContainer"]
-layout_mode = 2
-
-[node name="ResumeButton" type="Button" parent="UIPanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
 text = "Resume"
 
-[node name="QuitButton" type="Button" parent="UIPanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="UIPanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
 text = "Quit"
