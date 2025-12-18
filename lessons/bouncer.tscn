@@ -44,7 +44,7 @@ color = Color(0.69411767, 0, 0.2901961, 1)
 alpha_curve = SubResource("CurveTexture_d46nv")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o17vw"]
-radius = 31.016125
+radius = 48.010414
 
 [node name="Bouncer" type="CharacterBody2D"]
 motion_mode = 1
@@ -96,5 +96,5 @@ process_material = SubResource("ParticleProcessMaterial_d46nv")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, -33)
+position = Vector2(2, -50)
 shape = SubResource("CircleShape2D_o17vw")

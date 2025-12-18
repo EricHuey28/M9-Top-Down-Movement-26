@@ -9,13 +9,11 @@ func _ready() -> void:
 		if body is not Runner:
 			return
 		var runner := body as Runner
-		
 		runner.set_physics_process(false)
 		var destination_position := (
 			_finish_line.global_position
 			+Vector2(0, 64)
 		)
-		
 		runner.walk_to(destination_position)
 		runner.walked_to.connect(
 			_finish_line.pop_confettis
