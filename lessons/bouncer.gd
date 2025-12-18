@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var max_speed := 500.0
+@export var max_speed := 50.0
 @export var acceleration := 1200.0
 @onready var _runner_visual: RunnerVisual = %RunnerVisualPurple
 @onready var _dust: GPUParticles2D = %Dust
@@ -35,5 +35,3 @@ func _physics_process(delta: float) -> void:
 		_runner_visual.animation_name = RunnerVisual.Animations.IDLE
 		_dust.emitting = false
 		
-func get_global_player_position() -> Vector2:
-	return get_tree().root.get_node("Game/Runner").global_position
