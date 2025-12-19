@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var max_speed := 200.0
+@export var max_speed := 500.0
 @export var acceleration := 1000.0
 @export var avoidance_strength := 21000.0
 @onready var _dust: GPUParticles2D = %Dust

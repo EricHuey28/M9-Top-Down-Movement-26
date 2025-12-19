@@ -1,44 +1,82 @@
-[gd_scene load_steps=11 format=3 uid="uid://c62bk8cggi6yq"]
+[gd_scene load_steps=17 format=3 uid="uid://b6vroy358eqsu"]
 
 [ext_resource type="Script" uid="uid://5nrf8ebgtofs" path="res://lessons/game.gd" id="1_48faf"]
-[ext_resource type="PackedScene" uid="uid://p75euy1gcr34" path="res://lessons/runner.tscn" id="1_yasw7"]
+[ext_resource type="PackedScene" uid="uid://xl56q8amb611" path="res://assets/finish_line/finish_line.tscn" id="1_sepuf"]
+[ext_resource type="PackedScene" uid="uid://dwdga860bidlx" path="res://lessons/runner.tscn" id="1_yasw7"]
 [ext_resource type="PackedScene" uid="uid://l5vkm11cgaib" path="res://lessons/simple_obstacle.tscn" id="2_4o7yg"]
 [ext_resource type="Texture2D" uid="uid://5vl7p0xb7nd8" path="res://assets/circuit_background.png" id="3_gkp25"]
-[ext_resource type="PackedScene" uid="uid://xl56q8amb611" path="res://assets/finish_line/finish_line.tscn" id="4_48faf"]
-[ext_resource type="PackedScene" uid="uid://ctfrkukdhiywq" path="res://lessons/circuit.tscn" id="4_sepuf"]
-[ext_resource type="PackedScene" uid="uid://bno603k3ov21v" path="res://lessons/pause_screen.tscn" id="4_tpjcj"]
-[ext_resource type="Theme" uid="uid://cdcyvsn1fp8wa" path="res://assets/countdown/count_down_theme.tres" id="6_viysf"]
-[ext_resource type="PackedScene" uid="uid://budpgxkjtmw1f" path="res://lessons/bouncer.tscn" id="7_8c4bg"]
-[ext_resource type="Script" uid="uid://57e8080cpukf" path="res://assets/countdown/count_down.gd" id="7_tpjcj"]
+[ext_resource type="PackedScene" uid="uid://nkympivbosco" path="res://lessons/Circuit.tscn" id="4_sepuf"]
+[ext_resource type="PackedScene" uid="uid://budpgxkjtmw1f" path="res://lessons/bouncer.tscn" id="6_okwwg"]
+[ext_resource type="Theme" uid="uid://cdcyvsn1fp8wa" path="res://assets/countdown/count_down_theme.tres" id="7_viysf"]
+[ext_resource type="Script" uid="uid://57e8080cpukf" path="res://assets/countdown/count_down.gd" id="8_tpjcj"]
+[ext_resource type="FontFile" uid="uid://vxbfcnef0pvq" path="res://assets/fonts/rubik/Rubik-Bold.ttf" id="9_8c4bg"]
+[ext_resource type="Shader" uid="uid://dp1hn66gsihpv" path="res://assets/blur.gdshader" id="10_2l282"]
+[ext_resource type="Script" uid="uid://bgupu55kc5qmw" path="res://lessons/pause_screen.gd" id="10_okwwg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okwwg"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.046875, 0.024993896, 0.024993896, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtw2t"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.07450981, 0.11372549, 0.14901961, 0.3882353)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_tsb0o"]
+default_font = ExtResource("9_8c4bg")
+default_font_size = 42
+Button/styles/normal = SubResource("StyleBoxFlat_okwwg")
+Label/font_sizes/font_size = 64
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_jtw2t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnc5g"]
+shader = ExtResource("10_2l282")
+shader_parameter/blur_amount = 3.5390001681025
+shader_parameter/tint = Color(0, 0, 0, 1)
+shader_parameter/tint_strength = 0.0
+shader_parameter/saturation = 1.0
 
 [node name="Game" type="Node2D"]
-y_sort_enabled = true
-position = Vector2(1920, 1345)
 script = ExtResource("1_48faf")
+
+[node name="CircuitBackground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 541.5)
+scale = Vector2(0.5, 0.402902)
+texture = ExtResource("3_gkp25")
+
+[node name="Circuit" parent="." instance=ExtResource("4_sepuf")]
+
+[node name="FinishLine" parent="." instance=ExtResource("1_sepuf")]
+unique_name_in_owner = true
+position = Vector2(306, 445)
+area_width = 192
 
 [node name="Runner" parent="." instance=ExtResource("1_yasw7")]
 unique_name_in_owner = true
-position = Vector2(-568, -821)
+position = Vector2(573, 238)
 
-[node name="Bouncer" parent="." instance=ExtResource("7_8c4bg")]
+[node name="Bouncer" parent="." instance=ExtResource("6_okwwg")]
 unique_name_in_owner = true
-position = Vector2(-1153, -405)
+position = Vector2(324, 421)
 
-[node name="FinishLine" parent="." instance=ExtResource("4_48faf")]
-unique_name_in_owner = true
-position = Vector2(-1407, -166)
-area_width = 384
+[node name="SimpleObstacle" parent="." instance=ExtResource("2_4o7yg")]
+y_sort_enabled = true
+position = Vector2(650, 91)
 
-[node name="Circuit" parent="." instance=ExtResource("4_sepuf")]
-metadata/_edit_lock_ = true
-
-[node name="CircuitBackground" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-z_index = -1
-texture = ExtResource("3_gkp25")
+[node name="SimpleObstacle2" parent="." instance=ExtResource("2_4o7yg")]
+position = Vector2(868, 87)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 3
 
 [node name="CountDown" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -47,42 +85,90 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -313.0
-offset_top = -466.0
-offset_right = 321.0
-offset_bottom = -189.0
+offset_left = -20.0
+offset_top = -109.5
+offset_right = 20.0
+offset_bottom = 109.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("6_viysf")
-text = "test"
+theme = ExtResource("7_viysf")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("7_tpjcj")
-autostart = true
+script = ExtResource("8_tpjcj")
 metadata/_custom_type_script = "uid://57e8080cpukf"
 
-[node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("4_tpjcj")]
+[node name="PauseScreen" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_tsb0o")
+script = ExtResource("10_okwwg")
 
-[node name="SimpleObstacle" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(1066, -697)
+[node name="BlurColorRect" type="ColorRect" parent="CanvasLayer/PauseScreen"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_lnc5g")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="SimpleObstacle2" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(-797, -978)
+[node name="UIPanelContainer" type="PanelContainer" parent="CanvasLayer/PauseScreen"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -129.0
+offset_right = 150.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="SimpleObstacle8" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(32, -889)
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/UIPanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseScreen/UIPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseScreen/UIPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/UIPanelContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseScreen/UIPanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/PauseScreen/UIPanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
 
 [node name="SimpleObstacle3" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(-512, 19)
-
-[node name="SimpleObstacle4" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(560, -965)
-
-[node name="SimpleObstacle6" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(286, -264)
+position = Vector2(1125, 100)
 
 [node name="SimpleObstacle7" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(-1418, -307)
+position = Vector2(1001, 189)
 
-[node name="SimpleObstacle5" parent="." instance=ExtResource("2_4o7yg")]
-position = Vector2(-512, 19)
+[node name="SimpleObstacle8" parent="." instance=ExtResource("2_4o7yg")]
+position = Vector2(760, 196)
+
+[node name="SimpleObstacle9" parent="." instance=ExtResource("2_4o7yg")]
+position = Vector2(1328, 279)
